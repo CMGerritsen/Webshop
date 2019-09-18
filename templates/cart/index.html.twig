@@ -1,0 +1,27 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello CartController!{% endblock %}
+
+{% block body %}
+    {% for row in cart %}
+        {% if row[1] > 0 %}
+            {{ row[2].name }}
+            Prijs: &euro;{{ row[2].price * row[1] }}
+            Aantal: {{ row[1] }}
+            <br>
+            <a href="{{ path('cart_add', {'id': row[2].id}) }}">[+]</a>
+            <a href="{{ path('cart_remove', {'id': row[2].id}) }}">[-]</a>
+            <br>
+        {% endif %}
+    {% endfor %}
+
+
+    <br>
+    Totaal prijs: &euro;{{ total }}
+    <br>
+    <br>
+    <a class="btn btn-danger" href="{{ path('empty_cart') }}">Leeg cart</a>
+    <br>
+    <br>
+    <a class="btn btn-primary" href="{{ path('checkout') }}">Afrekenen</a>
+{% endblock %}

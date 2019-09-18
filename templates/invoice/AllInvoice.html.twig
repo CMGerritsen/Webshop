@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <table class="table">
+        <thead>
+        <tr>
+            <th>Id</th>
+            <th>User</th>
+            <th>Datum</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for item in invoice %}
+            <tr>
+                <td>{{ item.id }}</td>
+                <td>{{ item.user }}</td>
+                <td>{{  item.date ? item.date|date('m-d-Y') : '' }}</td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="5">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

@@ -1,0 +1,27 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello DefaultController!{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <!-- Page Heading -->
+        <h1 class="my-4">Products</h1>
+        <div class="row">
+            {% for item in product %}
+                <div class="col-lg-4 col-sm-6 mb-4">
+                    <div class="card h-100">
+                        <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
+                        <div class="card-body">
+                            <h4 class="card-title">
+                                <a href="/products/{{ item.id }}">{{ item.name }}</a>
+                            </h4>
+                            <p class="card-text">&euro;{{ item.price }},-</p>
+                            <p class="card-text">{{ item.description }}</p>
+                            <a href="{{ path('cart_add', {'id': item.id}) }}">Add to Cart</a>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}
